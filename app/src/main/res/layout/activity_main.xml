@@ -20,30 +20,35 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/i1a"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginHorizontal="18dp"
             android:src="@drawable/s_6" />
 
         <ImageView
+            android:id="@+id/i2a"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginHorizontal="16dp"
             android:src="@drawable/s_7" />
 
         <ImageView
+            android:id="@+id/i3a"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginHorizontal="15dp"
             android:src="@drawable/s_8" />
 
         <ImageView
+            android:id="@+id/i4a"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginHorizontal="16dp"
             android:src="@drawable/s_9" />
 
         <ImageView
+            android:id="@+id/i5a"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginHorizontal="18dp"
@@ -53,37 +58,42 @@
 
     <LinearLayout
         android:id="@+id/centline"
-        android:layout_marginVertical="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_marginVertical="20dp"
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/i1b"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginHorizontal="18dp"
             android:src="@drawable/s_1" />
 
         <ImageView
+            android:id="@+id/i2b"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginHorizontal="16dp"
             android:src="@drawable/s_2" />
 
         <ImageView
+            android:id="@+id/i3b"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginHorizontal="15dp"
             android:src="@drawable/s_3" />
 
         <ImageView
+            android:id="@+id/i4b"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginHorizontal="16dp"
             android:src="@drawable/s_4" />
 
         <ImageView
+            android:id="@+id/i5b"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginHorizontal="18dp"
@@ -98,35 +108,47 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/i1c"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginHorizontal="18dp"
             android:src="@drawable/s_9" />
 
         <ImageView
+            android:id="@+id/i2c"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginHorizontal="16dp"
             android:src="@drawable/s_5" />
 
         <ImageView
+            android:id="@+id/i3c"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginHorizontal="15dp"
             android:src="@drawable/s_11" />
 
         <ImageView
+            android:id="@+id/i4c"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginHorizontal="16dp"
             android:src="@drawable/s_8" />
 
         <ImageView
+            android:id="@+id/i5c"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginHorizontal="18dp"
             android:src="@drawable/s_3" />
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:id="@+id/spinger"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/b_spin_button" />
 
 
 </RelativeLayout>
