@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,8 +26,10 @@ public class MainActivity extends AppCompatActivity {
     ImageView i4c;
     ImageView i5c;
     ImageView spinger;
+    int[] imageNumber = {0, 0, 0, 0, 0};
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -63,49 +64,78 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    void loadPictures() {
-        ImageView[] listOfImages = {i1a, i2a, i3a, i4a, i5a, i1b, i2b, i3b, i4b, i5b, i1c, i2c, i3c, i4c, i5c};
-        for (int i = listOfImages.length-1; i > 0; i--) {
+        for (int i = 4; i > 0; i--) {
             int randomNumber = 1 + new Random().nextInt(11);
-            switch (randomNumber) {
-                case 1:
-                    listOfImages[i].setImageResource(R.drawable.s_1);
-                    break;
-                case 2:
-                    listOfImages[i].setImageResource(R.drawable.s_2);
-                    break;
-                case 3:
-                    listOfImages[i].setImageResource(R.drawable.s_3);
-                    break;
-                case 4:
-                    listOfImages[i].setImageResource(R.drawable.s_4);
-                    break;
-                case 5:
-                    listOfImages[i].setImageResource(R.drawable.s_5);
-                    break;
-                case 6:
-                    listOfImages[i].setImageResource(R.drawable.s_6);
-                    break;
-                case 7:
-                    listOfImages[i].setImageResource(R.drawable.s_7);
-                    break;
-                case 8:
-                    listOfImages[i].setImageResource(R.drawable.s_8);
-                    break;
-                case 9:
-                    listOfImages[i].setImageResource(R.drawable.s_9);
-                    break;
-                case 10:
-                    listOfImages[i].setImageResource(R.drawable.s_10);
-                    break;
-                case 11:
-                    listOfImages[i].setImageResource(R.drawable.s_11);
-                    break;
-            }
+            imageNumber[i] = randomNumber;
         }
     }
 
+    void loadPictures() {
+        ImageView[] listOfImagesTop = {i1a, i2a, i3a, i4a, i5a};
+        ImageView[] listOfImagesCenter = {i1b, i2b, i3b, i4b, i5b};
+        ImageView[] listOfImagesBottom = {i1c, i2c, i3c, i4c, i5c};
+        for (int i = 4; i > 0; i--) {
+            switch (imageNumber[i]) {
+                case 1:
+                    listOfImagesTop[i].setImageResource(R.drawable.s_1);
+                    listOfImagesCenter[i].setImageResource(R.drawable.s_2);
+                    listOfImagesBottom[i].setImageResource(R.drawable.s_3);
+                    break;
+                case 2:
+                    listOfImagesTop[i].setImageResource(R.drawable.s_2);
+                    listOfImagesCenter[i].setImageResource(R.drawable.s_3);
+                    listOfImagesBottom[i].setImageResource(R.drawable.s_4);
+                    break;
+                case 3:
+                    listOfImagesTop[i].setImageResource(R.drawable.s_3);
+                    listOfImagesCenter[i].setImageResource(R.drawable.s_4);
+                    listOfImagesBottom[i].setImageResource(R.drawable.s_5);
+                    break;
+                case 4:
+                    listOfImagesTop[i].setImageResource(R.drawable.s_4);
+                    listOfImagesCenter[i].setImageResource(R.drawable.s_5);
+                    listOfImagesBottom[i].setImageResource(R.drawable.s_6);
+                    break;
+                case 5:
+                    listOfImagesTop[i].setImageResource(R.drawable.s_5);
+                    listOfImagesCenter[i].setImageResource(R.drawable.s_6);
+                    listOfImagesBottom[i].setImageResource(R.drawable.s_7);
+                    break;
+                case 6:
+                    listOfImagesTop[i].setImageResource(R.drawable.s_6);
+                    listOfImagesCenter[i].setImageResource(R.drawable.s_7);
+                    listOfImagesBottom[i].setImageResource(R.drawable.s_8);
+                    break;
+                case 7:
+                    listOfImagesTop[i].setImageResource(R.drawable.s_7);
+                    listOfImagesCenter[i].setImageResource(R.drawable.s_8);
+                    listOfImagesBottom[i].setImageResource(R.drawable.s_9);
+                    break;
+                case 8:
+                    listOfImagesTop[i].setImageResource(R.drawable.s_8);
+                    listOfImagesCenter[i].setImageResource(R.drawable.s_9);
+                    listOfImagesBottom[i].setImageResource(R.drawable.s_10);
+                    break;
+                case 9:
+                    listOfImagesTop[i].setImageResource(R.drawable.s_9);
+                    listOfImagesCenter[i].setImageResource(R.drawable.s_10);
+                    listOfImagesBottom[i].setImageResource(R.drawable.s_11);
+                    break;
+                case 10:
+                    listOfImagesTop[i].setImageResource(R.drawable.s_10);
+                    listOfImagesCenter[i].setImageResource(R.drawable.s_11);
+                    listOfImagesBottom[i].setImageResource(R.drawable.s_1);
+                    break;
+                case 11:
+                    listOfImagesTop[i].setImageResource(R.drawable.s_11);
+                    listOfImagesCenter[i].setImageResource(R.drawable.s_1);
+                    listOfImagesBottom[i].setImageResource(R.drawable.s_2);
+                    break;
+            }
+        }
 
+
+    }
 }
+
+
