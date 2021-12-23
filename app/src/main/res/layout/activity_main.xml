@@ -143,12 +143,98 @@
             android:src="@drawable/s_3" />
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:id="@+id/spinger"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/b_spin_button" />
+        android:layout_marginHorizontal="100dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4">
+
+            <TextView
+                android:id="@+id/currency"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="3dp"
+                android:fontFamily="@font/aclonica"
+                android:gravity="center_vertical"
+                android:text="10000"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4">
+
+            <TextView
+                android:id="@+id/payment"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="3dp"
+                android:fontFamily="@font/aclonica"
+                android:text=" 25"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/dec"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="23dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/b_minus_button" />
+
+            <ImageView
+                android:id="@+id/inc"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/b_plus_button" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5">
+
+            <ImageView
+                android:id="@+id/spinger"
+                android:layout_width="50dp"
+                android:layout_height="45dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/b_spin_button" />
+
+            <ImageView
+                android:id="@+id/turbo_spinger"
+                android:layout_width="40dp"
+                android:layout_height="28dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/spinger"
+                android:src="@drawable/b_autospin_button" />
+            <ImageView
+                android:id="@+id/max"
+                android:layout_width="40dp"
+                android:layout_height="28dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/spinger"
+                android:src="@drawable/b_autospin_button" />
+        </RelativeLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 </RelativeLayout>

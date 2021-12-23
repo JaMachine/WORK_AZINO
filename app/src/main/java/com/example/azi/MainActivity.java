@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView spinger;
     int[] imageNumber = {0, 0, 0, 0, 0};
     int chickenRoll = 0;
+    boolean springRoll;
 
     @Override
 
@@ -66,11 +67,13 @@ public class MainActivity extends AppCompatActivity {
         spinger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                chickenRoll = new Random().nextInt(20) + 1;
-                for (int i = imageNumber.length - 1; i >= 0; i--) {
-                    imageNumber[i] = new Random().nextInt(11) + 1;
+                if (springRoll == false) {
+                    chickenRoll = new Random().nextInt(20) + 1;
+                    for (int i = imageNumber.length - 1; i >= 0; i--) {
+                        imageNumber[i] = new Random().nextInt(11) + 1;
+                    }
+                    loadPictures();
                 }
-                loadPictures();
             }
         });
         for (int i = 4; i >= 0; i--) {
@@ -149,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
                     .withListener(new Animator.AnimatorListener() {
                         @Override
                         public void onAnimationStart(Animator animation) {
+                            springRoll = true;
                         }
 
                         @Override
@@ -162,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
                             if (chickenRoll > 0) {
                                 chickenRoll--;
                                 loadPictures();
-                            }
+                            } else springRoll = false;
                         }
 
                         @Override
