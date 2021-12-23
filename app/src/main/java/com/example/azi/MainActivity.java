@@ -2,6 +2,7 @@ package com.example.azi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView i5c;
     ImageView spinger;
     int[] imageNumber = {0, 0, 0, 0, 0};
+    int chickenRoll = 0;
 
     @Override
 
@@ -64,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
         spinger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                chickenRoll = new Random().nextInt(20) + 1;
+                for (int i = imageNumber.length - 1; i >= 0; i--) {
+                    imageNumber[i] = new Random().nextInt(11) + 1;
+                }
                 loadPictures();
             }
         });
@@ -136,15 +142,43 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
 
-            YoYo.with(Techniques.SlideInUp)
-                    .duration(150)
+            int finalI = i;
+            YoYo.with(Techniques.SlideInDown)
+                    .duration(160)
                     .repeat(0)
+                    .withListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            for (int i = imageNumber.length - 1; i >= 0; i--) {
+                                imageNumber[i] += 1;
+                                {
+                                    if (imageNumber[i] > 11) imageNumber[i] = 1;
+                                }
+                            }
+                            if (chickenRoll > 0) {
+                                chickenRoll--;
+                                loadPictures();
+                            }
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+                        }
+                    })
                     .playOn(listOfImagesTop[i]);
-            YoYo.with(Techniques.SlideInUp)
+            YoYo.with(Techniques.SlideInDown)
                     .duration(150)
                     .repeat(0)
                     .playOn(listOfImagesCenter[i]);
-            YoYo.with(Techniques.SlideInUp)
+            YoYo.with(Techniques.SlideInDown)
                     .duration(150)
                     .repeat(0)
                     .playOn(listOfImagesBottom[i]);
