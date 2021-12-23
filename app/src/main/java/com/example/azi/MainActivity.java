@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
             int finalI = i;
             YoYo.with(Techniques.SlideInDown)
-                    .duration(160)
+                    .duration(190)
                     .repeat(0)
                     .withListener(new Animator.AnimatorListener() {
                         @Override
@@ -175,11 +175,11 @@ public class MainActivity extends AppCompatActivity {
                     })
                     .playOn(listOfImagesTop[i]);
             YoYo.with(Techniques.SlideInDown)
-                    .duration(150)
+                    .duration(190)
                     .repeat(0)
                     .playOn(listOfImagesCenter[i]);
             YoYo.with(Techniques.SlideInDown)
-                    .duration(150)
+                    .duration(190)
                     .repeat(0)
                     .playOn(listOfImagesBottom[i]);
         }
