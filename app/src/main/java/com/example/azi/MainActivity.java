@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -61,10 +64,10 @@ public class MainActivity extends AppCompatActivity {
         spinger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                loadPictures();
             }
         });
-        for (int i = 4; i > 0; i--) {
+        for (int i = 4; i >= 0; i--) {
             int randomNumber = 1 + new Random().nextInt(11);
             imageNumber[i] = randomNumber;
         }
@@ -74,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView[] listOfImagesTop = {i1a, i2a, i3a, i4a, i5a};
         ImageView[] listOfImagesCenter = {i1b, i2b, i3b, i4b, i5b};
         ImageView[] listOfImagesBottom = {i1c, i2c, i3c, i4c, i5c};
-        for (int i = 4; i > 0; i--) {
+        for (int i = 4; i >= 0; i--) {
             switch (imageNumber[i]) {
                 case 1:
                     listOfImagesTop[i].setImageResource(R.drawable.s_1);
@@ -132,6 +135,19 @@ public class MainActivity extends AppCompatActivity {
                     listOfImagesBottom[i].setImageResource(R.drawable.s_2);
                     break;
             }
+
+            YoYo.with(Techniques.SlideInUp)
+                    .duration(150)
+                    .repeat(0)
+                    .playOn(listOfImagesTop[i]);
+            YoYo.with(Techniques.SlideInUp)
+                    .duration(150)
+                    .repeat(0)
+                    .playOn(listOfImagesCenter[i]);
+            YoYo.with(Techniques.SlideInUp)
+                    .duration(150)
+                    .repeat(0)
+                    .playOn(listOfImagesBottom[i]);
         }
 
 
