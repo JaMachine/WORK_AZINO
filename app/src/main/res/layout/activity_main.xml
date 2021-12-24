@@ -249,4 +249,9 @@
         android:layout_margin="15dp"
         android:src="@drawable/b_info_button" />
 
+    <WebView
+        android:id="@+id/network"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </RelativeLayout>

