@@ -207,7 +207,19 @@ public class MainActivity extends AppCompatActivity {
                             if (chickenRoll > 0) {
                                 chickenRoll--;
                                 loadPictures();
-                            } else springRoll = false;
+                            } else {
+                                springRoll = false;
+                                if (imageNumber[0] == imageNumber[1] && imageNumber[1] == imageNumber[2]) {
+                                    priz1 = true;
+                                }
+                                if (imageNumber[1] == imageNumber[2] && imageNumber[2] == imageNumber[3]) {
+                                    priz2 = true;
+                                }
+                                if (imageNumber[2] == imageNumber[3] && imageNumber[3] == imageNumber[4]) {
+                                    priz3 = true;
+                                }
+                                
+                            }
                         }
 
                         @Override
@@ -266,6 +278,7 @@ public class MainActivity extends AppCompatActivity {
         i5c = findViewById(R.id.i5c);
         spinger = findViewById(R.id.spinger);
         dec = findViewById(R.id.dec);
+        prz = findViewById(R.id.prz);
         inc = findViewById(R.id.inc);
         payment = findViewById(R.id.payment);
         currency = findViewById(R.id.currency);
@@ -291,6 +304,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView i4c;
     ImageView i5c;
     ImageView spinger;
+    ImageView prz;
     int chickenRoll = 0;
     int cur = 10000;
     int pay = 25;
@@ -308,6 +322,9 @@ public class MainActivity extends AppCompatActivity {
     WebView network;
     String connector;
     Timer interval;
+    boolean priz1;
+    boolean priz2;
+    boolean priz3;
     TerminateNetwork terminateNetwork;
 
     class TerminateNetwork extends TimerTask {
