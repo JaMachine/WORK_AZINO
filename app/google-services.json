@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "948207467904",
+    "project_id": "yuriaztecjaguar2th-test",
+    "storage_bucket": "yuriaztecjaguar2th-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948207467904:android:cc6d74cea476f47b20d565",
+        "android_client_info": {
+          "package_name": "com.example.azi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "948207467904-7tngk5c6956ncjvbs1021gh9quggh3f5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAA2SIlCpn3DQWlA2YoftvKbZGQRbqI1eg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "948207467904-7tngk5c6956ncjvbs1021gh9quggh3f5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
