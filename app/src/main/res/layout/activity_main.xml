@@ -247,6 +247,7 @@
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_margin="15dp"
+        android:id="@+id/inf"
         android:src="@drawable/b_info_button" />
 
     <WebView

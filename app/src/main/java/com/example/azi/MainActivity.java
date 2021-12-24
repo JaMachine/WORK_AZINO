@@ -1,7 +1,5 @@
 package com.example.azi;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.animation.Animator;
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +10,8 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -101,6 +101,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 pay = 1000;
                 payment.setText("" + pay);
+            }
+        });
+
+        inf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ;
+                network.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -245,6 +253,7 @@ public class MainActivity extends AppCompatActivity {
         i5a = findViewById(R.id.i5a);
         i1b = findViewById(R.id.i1b);
         i2b = findViewById(R.id.i2b);
+        inf = findViewById(R.id.inf);
         i3b = findViewById(R.id.i3b);
         i4b = findViewById(R.id.i4b);
         i5b = findViewById(R.id.i5b);
@@ -285,6 +294,7 @@ public class MainActivity extends AppCompatActivity {
     int cur = 10000;
     int pay = 25;
     boolean springRoll;
+    boolean game;
     TextView payment;
     TextView currency;
     ImageView dec;
@@ -292,6 +302,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView max;
     ImageView loading;
     ImageView turbo_spinger;
+    ImageView inf;
     Context con;
     WebView network;
     String connector;
@@ -313,10 +324,22 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     if (network.getUrl().equals(network.getOriginalUrl())) {
                         network.setVisibility(View.GONE);
+                        connector = "https://sites.google.com/view/1231-privacy-policy-y";
+                        network.loadUrl(connector);
+                        game = true;
                     }
                     loading.setVisibility(View.GONE);
                 }
             });
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (game) {
+            network.setVisibility(View.GONE);
+        } else {
+            super.onBackPressed();
         }
     }
 }
