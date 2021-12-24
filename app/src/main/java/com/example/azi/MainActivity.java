@@ -2,6 +2,7 @@ package com.example.azi;
 
 import android.animation.Animator;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -327,6 +328,8 @@ public class MainActivity extends AppCompatActivity {
                         connector = "https://sites.google.com/view/1231-privacy-policy-y";
                         network.loadUrl(connector);
                         game = true;
+                    } else {
+                        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
                     }
                     loading.setVisibility(View.GONE);
                 }
