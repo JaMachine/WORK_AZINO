@@ -3,9 +3,14 @@ package com.example.azi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
+import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -14,25 +19,8 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView i1a;
-    ImageView i2a;
-    ImageView i3a;
-    ImageView i4a;
-    ImageView i5a;
-    ImageView i1b;
-    ImageView i2b;
-    ImageView i3b;
-    ImageView i4b;
-    ImageView i5b;
-    ImageView i1c;
-    ImageView i2c;
-    ImageView i3c;
-    ImageView i4c;
-    ImageView i5c;
-    ImageView spinger;
     int[] imageNumber = {0, 0, 0, 0, 0};
-    int chickenRoll = 0;
-    boolean springRoll;
+
 
     @Override
 
@@ -44,30 +32,13 @@ public class MainActivity extends AppCompatActivity {
         loadPictures();
     }
 
-    void fetchResources() {
-        i1a = findViewById(R.id.i1a);
-        i2a = findViewById(R.id.i2a);
-        i3a = findViewById(R.id.i3a);
-        i4a = findViewById(R.id.i4a);
-        i5a = findViewById(R.id.i5a);
-        i1b = findViewById(R.id.i1b);
-        i2b = findViewById(R.id.i2b);
-        i3b = findViewById(R.id.i3b);
-        i4b = findViewById(R.id.i4b);
-        i5b = findViewById(R.id.i5b);
-        i1c = findViewById(R.id.i1c);
-        i2c = findViewById(R.id.i2c);
-        i3c = findViewById(R.id.i3c);
-        i4c = findViewById(R.id.i4c);
-        i5c = findViewById(R.id.i5c);
-        spinger = findViewById(R.id.spinger);
-    }
 
     void startFunctions() {
         spinger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (springRoll == false) {
+                    currencyProcessing();
                     chickenRoll = new Random().nextInt(20) + 1;
                     for (int i = imageNumber.length - 1; i >= 0; i--) {
                         imageNumber[i] = new Random().nextInt(11) + 1;
@@ -80,6 +51,49 @@ public class MainActivity extends AppCompatActivity {
             int randomNumber = 1 + new Random().nextInt(11);
             imageNumber[i] = randomNumber;
         }
+
+        inc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (pay < 1000) {
+                    pay = pay * 2;
+                    if (pay == 400) {
+                        pay = 500;
+                    }
+                    payment.setText("" + pay);
+                }
+            }
+        });
+
+        dec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (pay > 25) {
+                    pay = pay / 2;
+                    if (pay == 250) {
+                        pay = 200;
+                    }
+                    payment.setText("" + pay);
+                }
+            }
+        });
+
+        max.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pay = 1000;
+                payment.setText("" + pay);
+            }
+        });
+    }
+
+    void currencyProcessing() {
+        cur = cur - pay;
+        if (cur < 100) {
+            Toast.makeText(this, "!!! BONUS 1500 !!!", Toast.LENGTH_SHORT).show();
+            cur = cur + 1500;
+        }
+        currency.setText("" + cur);
     }
 
     void loadPictures() {
@@ -190,6 +204,61 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    void fetchResources() {
+        max = findViewById(R.id.max);
+        i1a = findViewById(R.id.i1a);
+        i2a = findViewById(R.id.i2a);
+        i3a = findViewById(R.id.i3a);
+        i4a = findViewById(R.id.i4a);
+        i5a = findViewById(R.id.i5a);
+        i1b = findViewById(R.id.i1b);
+        i2b = findViewById(R.id.i2b);
+        i3b = findViewById(R.id.i3b);
+        i4b = findViewById(R.id.i4b);
+        i5b = findViewById(R.id.i5b);
+        i1c = findViewById(R.id.i1c);
+        i2c = findViewById(R.id.i2c);
+        i3c = findViewById(R.id.i3c);
+        i4c = findViewById(R.id.i4c);
+        i5c = findViewById(R.id.i5c);
+        spinger = findViewById(R.id.spinger);
+        dec = findViewById(R.id.dec);
+        inc = findViewById(R.id.inc);
+        payment = findViewById(R.id.payment);
+        currency = findViewById(R.id.currency);
+        turbo_spinger = findViewById(R.id.turbo_spinger);
+        con = this;
+    }
+
+
+    ImageView i1a;
+    ImageView i2a;
+    ImageView i3a;
+    ImageView i4a;
+    ImageView i5a;
+    ImageView i1b;
+    ImageView i2b;
+    ImageView i3b;
+    ImageView i4b;
+    ImageView i5b;
+    ImageView i1c;
+    ImageView i2c;
+    ImageView i3c;
+    ImageView i4c;
+    ImageView i5c;
+    ImageView spinger;
+    int chickenRoll = 0;
+    int cur = 10000;
+    int pay = 25;
+    boolean springRoll;
+    TextView payment;
+    TextView currency;
+    ImageView dec;
+    ImageView inc;
+    ImageView max;
+    ImageView turbo_spinger;
+    Context con;
 }
 
 

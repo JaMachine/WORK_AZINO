@@ -220,7 +220,7 @@
                 android:layout_marginVertical="3dp"
                 android:layout_weight="1"
                 android:scaleType="fitXY"
-                android:src="@drawable/b_autospin_button" />
+                android:src="@drawable/b_max_bet_button" />
 
             <ImageView
                 android:id="@+id/spinger"
