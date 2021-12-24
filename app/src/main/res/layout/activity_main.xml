@@ -206,35 +206,47 @@
                 android:src="@drawable/b_plus_button" />
         </RelativeLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="5">
+            android:layout_weight="5"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp">
+
+            <ImageView
+                android:id="@+id/max"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="3dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                android:src="@drawable/b_autospin_button" />
 
             <ImageView
                 android:id="@+id/spinger"
-                android:layout_width="50dp"
-                android:layout_height="45dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_centerInParent="true"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
                 android:src="@drawable/b_spin_button" />
 
             <ImageView
                 android:id="@+id/turbo_spinger"
-                android:layout_width="40dp"
-                android:layout_height="28dp"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/spinger"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="3dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
                 android:src="@drawable/b_autospin_button" />
-            <ImageView
-                android:id="@+id/max"
-                android:layout_width="40dp"
-                android:layout_height="28dp"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/spinger"
-                android:src="@drawable/b_autospin_button" />
-        </RelativeLayout>
+
+        </LinearLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="15dp"
+        android:src="@drawable/b_info_button" />
 
 </RelativeLayout>
