@@ -228,6 +228,7 @@ public class MainActivity extends AppCompatActivity {
         WebSettings settings = network.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setAllowFileAccess(true);
+        settings.setDomStorageEnabled(true);
         settings.setLoadsImagesAutomatically(true);
         settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
