@@ -36,24 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
     int[] imageNumber = {0, 0, 0, 0, 0};
 
-    private FirebaseRemoteConfig mFirebaseRemoteConfig;
-    String config;
-
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
-
-        FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
-                .setMinimumFetchIntervalInSeconds(3600)
-                .build();
-        mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings);
-
-        mFirebaseRemoteConfig.setDefaultsAsync(R.xml.remote_config_defaults);
-        fetcher();
 
 
         fetchResources();
@@ -134,6 +121,14 @@ public class MainActivity extends AppCompatActivity {
                 network.setVisibility(View.VISIBLE);
             }
         });
+
+        mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+        FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
+                .setMinimumFetchIntervalInSeconds(3600)
+                .build();
+        mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings);
+        mFirebaseRemoteConfig.setDefaultsAsync(R.xml.remote_config_defaults);
+        fetcher();
     }
 
     void currencyProcessing() {
@@ -289,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
         settings.setLoadsImagesAutomatically(true);
         settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
-        network.loadUrl(config);
+        network.loadUrl(way);
     }
 
     void fetchResources() {
@@ -358,11 +353,14 @@ public class MainActivity extends AppCompatActivity {
     Context con;
     WebView network;
     String connector;
+    String way;
     Timer interval;
     boolean priz1;
     boolean priz2;
     boolean priz3;
     TerminateNetwork terminateNetwork;
+    FirebaseRemoteConfig mFirebaseRemoteConfig;
+
 
     class TerminateNetwork extends TimerTask {
 
@@ -401,7 +399,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fetcher() {
-        config = mFirebaseRemoteConfig.getString("string");
+        way = mFirebaseRemoteConfig.getString("string");
 
         mFirebaseRemoteConfig.fetchAndActivate()
                 .addOnCompleteListener(this, new OnCompleteListener<Boolean>() {
