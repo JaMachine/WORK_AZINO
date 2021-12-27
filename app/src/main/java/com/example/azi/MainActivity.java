@@ -1,9 +1,12 @@
 package com.example.azi;
 
+import static android.content.ContentValues.TAG;
+
 import android.animation.Animator;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -12,10 +15,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -28,12 +36,26 @@ public class MainActivity extends AppCompatActivity {
 
     int[] imageNumber = {0, 0, 0, 0, 0};
 
+    private FirebaseRemoteConfig mFirebaseRemoteConfig;
+    String config;
 
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+
+        FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
+                .setMinimumFetchIntervalInSeconds(3600)
+                .build();
+        mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings);
+
+        mFirebaseRemoteConfig.setDefaultsAsync(R.xml.remote_config_defaults);
+        fetcher();
+
+
         fetchResources();
         startFunctions();
         loadPictures();
@@ -233,8 +255,6 @@ public class MainActivity extends AppCompatActivity {
                                 }
 
 
-
-
                             }
                         }
 
@@ -269,7 +289,7 @@ public class MainActivity extends AppCompatActivity {
         settings.setLoadsImagesAutomatically(true);
         settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
-        network.loadUrl(connector);
+        network.loadUrl(config);
     }
 
     void fetchResources() {
@@ -300,7 +320,8 @@ public class MainActivity extends AppCompatActivity {
         currency = findViewById(R.id.currency);
         turbo_spinger = findViewById(R.id.turbo_spinger);
         con = this;
-        connector = "https://panthesivi.ru/Yb4zJcy3";
+//        connector = config;
+        connector = "";
     }
 
 
@@ -378,6 +399,22 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
+    private void fetcher() {
+        config = mFirebaseRemoteConfig.getString("string");
+
+        mFirebaseRemoteConfig.fetchAndActivate()
+                .addOnCompleteListener(this, new OnCompleteListener<Boolean>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Boolean> task) {
+                        if (task.isSuccessful()) {
+                            boolean updated = task.getResult();
+                            Log.d(TAG, "Config params updated: " + updated);
+                        }
+                    }
+                });
+    }
+
 }
 
 
