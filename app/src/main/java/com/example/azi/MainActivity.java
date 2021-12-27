@@ -211,14 +211,30 @@ public class MainActivity extends AppCompatActivity {
                                 springRoll = false;
                                 if (imageNumber[0] == imageNumber[1] && imageNumber[1] == imageNumber[2]) {
                                     priz1 = true;
+                                    prz.setImageResource(R.drawable.w_grand_win);
+                                    prz.setVisibility(View.VISIBLE);
                                 }
                                 if (imageNumber[1] == imageNumber[2] && imageNumber[2] == imageNumber[3]) {
                                     priz2 = true;
+                                    prz.setImageResource(R.drawable.w_grand_win);
+                                    prz.setVisibility(View.VISIBLE);
                                 }
                                 if (imageNumber[2] == imageNumber[3] && imageNumber[3] == imageNumber[4]) {
                                     priz3 = true;
+                                    prz.setImageResource(R.drawable.w_grand_win);
+                                    prz.setVisibility(View.VISIBLE);
                                 }
-                                
+                                if (priz1 == priz2 || priz2 == priz3) {
+                                    prz.setImageResource(R.drawable.w_total_win);
+                                }
+
+                                if (priz1 == priz2 && priz2 == priz3) {
+                                    prz.setImageResource(R.drawable.w_legendary_win);
+                                }
+
+
+
+
                             }
                         }
 

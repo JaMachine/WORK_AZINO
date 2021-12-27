@@ -269,4 +269,6 @@
         android:scaleType="fitXY"
         android:src="@drawable/loading_screen" />
 
+
+
 </RelativeLayout>
